@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="syApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="top">
+        <div class="main">
+            <div class="logo">
+                <a href="#"><img src="css/images/logo.jpg" /></a>
+            </div>
+            <a ui-sref="common.contact" class="contact-icon"></a>
+        </div>
+    </div>
+    <div class="nav">
+        <div class="main">
+            <ul class="clearfix">
+                <li><a ui-sref="index">首页</a></li>
+                <li><a ui-sref="common.ins">公司简介<span class="cart"></span></a>
+                    <ul>
+                        <li><a ui-sref="common.honors">公司荣誉</a></li>
+                    </ul>
+                </li>
+                <li><a ui-sref="common.talk">总经理致辞</a></li>
+                <li><a ui-sref="common.product({id:0})">产品展示<span class="cart"></span></a>
+                    <ul ng-controller="navCtrl">
+                        <li ng-repeat="item in f_list" bindonce>
+                            <a ui-sref="common.product({id:item.id})">{{item.name}}<span class="arrow-right " ng-if="item.child.length>0"></span></a>
+                            <ul ng-if="item.child.length > 0">
+                                <li bindonce  ng-repeat="sub1 in item.child track by $index"><a ui-sref="common.product({id:sub1.id})">{{sub1.name}}<span class="arrow-right" ng-if="sub1.child.length>0"></span></a>
+                                    <ul ng-if="sub1.child.length > 0">
+                                        <li bindonce ng-repeat="sub2 in sub1.child"><a ui-sref="common.product({id:sub2.id})">{{sub2.name}}</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a ui-sref="common.performance">工程业绩</a></li>
+                <li><a ui-sref="common.contact">联系我们</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content" ui-view="main"></div>
+    <div class="footer">
+        <div class="main clearfix">
+            <div class="pull-left">
+                <ul class="footer-nav clearfix">
+                    <li><a ui-sref="index">首页</a></li>
+                    <li><a ui-sref="common.ins">公司简介</a></li>
+                    <li><a  ui-sref="common.talk">总经理致辞</a></li>
+                    <li><a ui-sref="common.product">产品展示</a></li>
+                    <li><a ui-sref="common.performance">工程业绩</a></li>
+                    <li><a ui-sref="common.contact">联系我们</a></li>
+                </ul>
+                <div class="text-white text-center">
+                    Copyright &copy; 盐城松源机械制造&nbsp;All Rights Reserved by Yancheng Songyuan
+                </div>
+            </div>
+
+            <div class="footer-contacts pull-left ml20">
+                <p>盐城市松源机械制造有限公司</p>
+                <p>地址：江苏省盐城市盐都区秦南镇工业园区12号  224021</p>
+                <p>电话：0515-88692888</p>
+                <p>传真：0515-88603058</p>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-ui-router.js"></script>
+    <script src="scripts/bindonce.min.js"></script>
+    <script src="scripts/jquery-1.11.1.js"></script>
+    <script src="scripts/jquery.livequery.js"></script>
+    <script src="scripts/jquery.cxscroll.js"></script>
+    <script src="scripts/jquery.slide.js"></script>
+    <script src="scripts/jquery.kxbdMarquee.js"></script>
+    <script src="scripts/controller.js"></script>
+</body>
+</html>

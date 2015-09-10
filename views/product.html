@@ -1,0 +1,39 @@
+<div ng-if="product.length == 1 && product[0].files.length > 0">
+    <div class="mt40 pl30 clearfix">
+        <ul class="pull-left big-img">
+            <li ng-repeat="imgUrl in product[0].files track by $index" ng-class="{true: 'active'}[$index==current]" >
+                <img ng-src="{{'/pics/products/'+product[0].product_name_en + '/' + imgUrl}}" />
+            </li>
+
+        </ul>
+        <ul class="thumbnail pull-left">
+            <li ng-repeat="imgUrl in product[0].files track by $index" ng-click="changeImg($index)">
+                <img ng-src="{{'/pics/products/'+product[0].product_name_en + '/' +imgUrl}}" />
+            </li>
+        </ul>
+    </div>
+    <div class="button-block clearfix">
+        <button class="btn mr15" ng-click="toPrev()">&lt;</button><button class="btn" ng-click="toNext()">&gt;</button>
+    </div>
+    <div class="mt40">
+        <div ng-if="product[0].product_summary_ch">
+            <p class="">{{product[0].product_name_ch}}简介：</p>
+            <div class="mt15">{{product[0].product_summary_ch}}</div>
+        </div>
+        <div ng-if="product[0].product_summary_en">
+            <p class="mt15">{{product[0].product_name_en}}</p>
+            <div class="">{{product[0].product_summary_en}}</div>
+        </div>
+
+    </div>
+</div>
+<div ng-if="product.length > 1">
+    <ul class="p-list clearfix">
+        <li ng-repeat="item in product track by $index" ng-if="item.files.length > 0">
+            <a ui-sref="common.product({id:item.product_id})">
+                <img ng-src="{{'/pics/products/'+item.product_name_en + '/' + item.files[0]}}" width="210" height="150" />
+                <p class="mt5"><a class="text-normal" ui-sref="common.product({id:item.product_id})">{{item.product_name_ch}}</a></p>
+            </a>
+        </li>
+    </ul>
+</div>

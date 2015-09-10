@@ -1,0 +1,75 @@
+<div class="banner">
+    <ul id="banner">
+        <li bindonce="banners" ng-repeat="banner in banners" ng-style="{'background':'url({{'/pics/'+banner}})'}"></li>
+    </ul>
+    <ul class="dot-list">
+        <li ng-repeat="banner in banners" ng-class="{'active':$first}"></li>
+    </ul>
+</div>
+<div class="main">
+    <div class="mt10 clearfix">
+        <div id="slide1" class="company-img pull-left">
+            <img ng-repeat="img in images" ng-src="{{'/pics/'+img}}" />
+        </div>
+        <div class="pull-left item-1 ml20">
+            <div class="title-bar">公司动态</div>
+            <ul ng-if="news.length > 0">
+                <li ng-repeat="msg in news">
+                    <time>{{msg.time}}</time>
+                    <p>{{msg.content}}</p>
+                </li>
+            </ul>
+            <div ng-if="news.length < 1">
+                暂无公司动态
+            </div>
+        </div>
+        <div class="item-2 pull-right">
+            <div class="title-bar">公司简介</div>
+            <div class="clearfix">
+                <div class="item-5 pull-left mr10"></div>
+                <div class="font-size-12 mt10">盐城市松源机械制造有限公司始建于90年代初，公司成立以来一直专注于通用机械及零部件、电镀机械、化纤机械、环保机械、汽车零部件、输送设备、升降台制造及销售、涂装非标设备的设计、制造、安装。占地面积1万平方米，员工120余名，各类专业技术人员40余名...</div>
+            </div>
+        </div>
+    </div>
+    <div class="mt25 clearfix">
+        <div class="item-3 pull-left">
+            <div class="title-bar">合作伙伴</div>
+            <div class="cxscroll" id="cxscroll">
+                <div class="box">
+                    <ul class="ul-comp list clearfix">
+                        <li ng-repeat="company in companies">
+                            <img ng-src="{{'/pics/companies/'+company}}" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="item-4 pull-right">
+            <div class="title-bar">联系我们</div>
+            <div class="font-size-12 lh20">
+                <p class="mt10">地址：江苏省盐城市盐都区秦南镇工业园区12号&nbsp;&nbsp;224021</p>
+                <p>电话：0515-88692888</p>
+                <p>传真：0515-88603058</p>
+                <p>总经理：高桂松</p>
+                <p>电话：18305102888&nbsp;&nbsp;&nbsp;&nbsp;13605102558</p>
+            </div>
+        </div>
+    </div>
+    <div class="mt25">
+        <div class="title-bar">产品中心</div>
+        <div class="product-rec">
+            <ul class="product-rec-list" id="product-rec">
+                <li ng-repeat="l in p_lists track by $index">
+                    <a ui-sref="common.product({id:l.product_id})">
+                        <img ng-src="{{'/pics/chanpin/'+l.image}}" />
+                    </a>
+                    <p class="text-center">
+                        <a ui-sref="common.product({id:l.product_id})">{{l.product_name}}</a>
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

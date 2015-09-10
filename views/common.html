@@ -1,0 +1,29 @@
+
+<div class="common-banner mb10">
+    <img ng-src="{{'images/sub_banner/' + banner_img}}" />
+</div>
+<div class="main">
+    <div class="clearfix">
+        <div class="item-6 pull-left">
+            <div class="title-bar">产品分类</div>
+            <ul class="mt10 product-list">
+                <li ng-repeat="item in products">
+                    <a ui-sref="common.product({id:item.id})">{{item.name}}</a>
+                </li>
+            </ul>
+            <div class="title-bar mt10">联系我们</div>
+            <div class="mt10">
+                <p>地址：江苏省盐城市盐都区秦南镇工业园区12号   224021</p>
+                <p>电话：0515-88692888</p>
+                <p>传真：0515-88603058</p>
+                <p>总经理：高桂松</p>
+                <div><span class="pull-left">电话：</span><p style="padding-left:45px;">18305102888<br/>13605102558</p>
+                </div>
+            </div>
+        </div>
+        <div class="item-7 pull-right">
+            <div class="title-bar">{{titleName}}</div>
+            <div ui-view="rightMain"></div>
+        </div>
+    </div>
+</div>

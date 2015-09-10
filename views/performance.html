@@ -1,0 +1,14 @@
+<ul class="per-ul mt40">
+    <li class="clearfix" ng-repeat="item in items track by $index">
+        <img ng-src="{{'images/performance/' + item.img_name}}" class="pull-left" width="155" height="109" />
+        <div class="detail">
+            <p class="mb10 font-bold">
+                {{item.name}}
+            </p>
+            <p>
+                {{item.detail}}
+            </p>
+
+        </div>
+    </li>
+</ul>
